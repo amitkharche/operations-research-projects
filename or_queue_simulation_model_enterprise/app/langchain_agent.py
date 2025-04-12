@@ -2,6 +2,12 @@
 Streamlit UI for Queue Optimization Agent with OpenAI Key Loader, Prompt Templates,
 FAISS Memory (fallback to JSON), and Decision Logging.
 """
+import sys
+import os
+
+# Add the src folder to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+
 import streamlit as st
 import pandas as pd
 from datetime import datetime
