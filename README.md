@@ -1,116 +1,157 @@
 
-# 📊 Operations Research Projects Portfolio
+# 🧮 Operations Research Projects
 
-Welcome to my collection of **Operations Research (OR) projects**, designed to solve complex optimization problems across transportation, logistics, inventory, and service systems.  
-These projects combine **mathematical modeling**, **Python implementation**, and **interactive dashboards** for real-world decision-making.
-
----
-
-## 📁 Repository Structure
-
-Each folder contains a standalone OR project with model logic, input data, optimization solver, and optional Streamlit/FastAPI deployment.
-
-```
-operations_research_projects/
-├── transportation_problem_optimizer/
-├── assignment_problem_solver/
-├── inventory_optimization_model/
-├── queue_simulation_engine/
-└── network_analysis_cpm_pert/
-```
+A comprehensive collection of interactive, modular, and deployment-ready Operations Research (OR) tools built using Python, Streamlit, FastAPI, and optimization libraries. Each project solves a practical problem in logistics, supply chain, inventory, scheduling, or service systems.
 
 ---
 
-## 🚀 Project Overviews
+## 🚀 Projects Included
 
-### 🚚 [Transportation Problem Optimizer](./transportation_problem_optimizer)
-- Minimizes total transportation cost across suppliers and destinations
-- Uses Linear Programming (LP) and `scipy.optimize.linprog`
-- Visualizes optimal transport plan and total cost
-- Includes Streamlit dashboard for scenario inputs
+### 🔁 Assignment Problem Solver
+Assign tasks to agents (e.g., workers to jobs) using the Hungarian Algorithm to minimize total cost.
 
-### 👔 [Assignment Problem Solver](./assignment_problem_solver)
-- Solves task allocation or job scheduling using Hungarian Algorithm
-- Uses `scipy.optimize.linear_sum_assignment` for optimization
-- Supports cost matrix upload and returns optimal assignments
-- FastAPI microservice version available for automation
+- Upload CSV cost matrix
+- View optimized assignment and total cost
+- Download results
+- Streamlit app + Docker-ready
 
-### 🧮 [Inventory Optimization Model](./inventory_optimization_model)
-- Calculates Economic Order Quantity (EOQ) and reorder points
-- Minimizes holding and ordering costs
-- Alerts when inventory drops below threshold
-- Includes Slack/email notifications and FastAPI endpoint
-
-### 🕒 [Queue Simulation Engine](./queue_simulation_engine)
-- Simulates queueing systems (M/M/1, M/M/c)
-- Uses Poisson/Exponential distributions to generate arrivals/services
-- Computes average wait time, queue length, and server utilization
-- Dashboard includes sliders for arrival/service rates
-
-### 📅 [Network Analysis: CPM & PERT](./network_analysis_cpm_pert)
-- Models project networks using activity nodes and durations
-- Calculates critical paths and project slack
-- Visualizes project flow and timeline
-- Useful for engineering and construction scheduling
-
----
-
-## 🛠 Tech Stack
-
-- Python 3.8+
-- NumPy, Pandas, SciPy, PuLP
-- Streamlit, FastAPI for UI and microservices
-- Matplotlib, Plotly for visualizations
-- NetworkX for network modeling (CPM/PERT)
-
----
-
-## 📦 How to Run
-
-### 🔧 Clone the Repository
-
-```bash
-git clone https://github.com/amitkharche/operations-research-projects.git
-cd operations-research-projects
-```
-
-### 📂 Navigate to a Project Folder
-
-```bash
-cd transportation_problem_optimizer
-```
-
-### 📦 Install Requirements
-
+**Run Locally**
 ```bash
 pip install -r requirements.txt
+streamlit run app/app.py
 ```
 
-### 🧮 Run Optimization or Launch Dashboard
-
+**Run with Docker**
 ```bash
-python solver.py
-# or
-streamlit run app.py
+docker build -t assignment-solver .
+docker run -p 8501:8501 assignment-solver
 ```
 
 ---
 
-## 📬 Contact
+### 📦 Inventory Optimization with EOQ
+Optimize inventory levels using the classic EOQ formula to minimize holding and ordering costs.
+
+**Features**
+- Upload CSV with demand, ordering cost, and holding cost
+- Get EOQ, reorder frequency, and total cost
+- Download optimized results
+- Docker + Streamlit + FastAPI
+
+**EOQ System Includes**
+- ✅ Streamlit App
+- ✅ FastAPI Backend (`src/api_service.py`)
+- ✅ Auto-launch script (`start_server.py`)
+- ✅ Notification Alerts (Email/Slack via `src/notifier.py`)
+
+**Run Locally**
+```bash
+streamlit run app/app.py
+```
+
+**Run API Server**
+```bash
+uvicorn src.api_service:app --reload
+```
+
+**Start Full System**
+```bash
+python start_server.py
+```
+
+---
+
+### ⏳ Queue Simulation Model with LangChain Agent
+Simulate queue behavior and recommend improvements using LangChain + OpenAI.
+
+**Features**
+- Simulate queue with Poisson arrivals & exponential service
+- Streamlit dashboard for analysis
+- LangChain agent to recommend optimizations (more counters, shift changes, etc.)
+- Decision logging using JSON
+- FAISS memory + OpenAI API integration
+
+**Run Simulation App**
+```bash
+streamlit run app/app.py
+```
+
+**Run LangChain Agent**
+```bash
+streamlit run app/langchain_agent.py
+```
+
+**Docker**
+```bash
+docker build -t queue-sim .
+docker run -p 8501:8501 queue-sim
+```
+
+---
+
+### 🚛 Transportation Problem Optimizer
+Minimize transportation cost from warehouses to stores using Linear Programming.
+
+**Features**
+- Input cost matrix, supply, and demand
+- Output optimized route matrix and total cost
+- Interactive Streamlit app
+
+**Run Locally**
+```bash
+pip install -r requirements.txt
+streamlit run app/app.py
+```
+
+**Docker**
+```bash
+docker build -t transport-optimizer .
+docker run -p 8501:8501 transport-optimizer
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+operations-research-projects/
+├── assignment_problem_solver/
+├── inventory_optimization_model/
+├── queue_simulation_model/
+├── transportation_problem_optimizer/
+├── shared_components/
+├── LICENSE
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🧰 Tech Stack
+
+- Python, Pandas, NumPy
+- PuLP, SciPy, SimPy
+- Streamlit, FastAPI, LangChain
+- OpenAI API, FAISS, Plotly
+- Docker & Uvicorn
+
+---
+
+## 📬 Author
 
 **Amit Kharche**  
+📧 Email: amit@example.com  
 🔗 [LinkedIn](https://www.linkedin.com/in/amitkharche)
 
 ---
 
 ## 📄 License
 
-This repository is licensed under the MIT License.  
-You are welcome to fork, adapt, and contribute.
+MIT License – free to use, modify, and distribute.
 
 ---
 
-## ⭐ Feedback & Collaboration
+## ⭐ Feedback & Contributions
 
-If you find these models useful, feel free to ⭐ the repo.  
-Pull requests and improvements are always appreciated!
+Found this helpful? Give the repo a ⭐!  
+Open an issue or submit a PR to improve or extend any module.
