@@ -140,7 +140,6 @@ operations-research-projects/
 ## 📬 Author
 
 **Amit Kharche**  
-📧 Email: amit@example.com  
 🔗 [LinkedIn](https://www.linkedin.com/in/amitkharche)
 
 ---
